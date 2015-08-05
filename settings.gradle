@@ -1,0 +1,4 @@
+rootProject.name = 'haws'
+
+include 'services'
+project(':services').name = 'haws-services'
