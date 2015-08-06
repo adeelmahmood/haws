@@ -48,7 +48,7 @@ secretKey=1233jSsasd23o6qh6vasdjklasdjt9BKgRPjkk423jkhkfdhjkf
 
 ```bash
 > cd ../../../../ (to go back to root folder)
-> ./gradlew build
+> ./gradlew build (or just gradlew build in windows) 
 ...
 ...
 Build Successful
