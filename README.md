@@ -54,7 +54,7 @@ secretKey=1233jSsasd23o6qh6vasdjklasdjt9BKgRPjkk423jkhkfdhjkf
 Build Successful
 ```
 
-Now we have a compiled jar to run the application with. Before running the application lets understand what we are trying to do. We want to upload some files from a directory in our local computer to S3. So first we need to create some random files to upload
+Now we have a compiled jar to run the application. Before running the application lets understand what we are trying to do. We want to upload some files from a directory in our local computer to S3. So first we need to create some random files to upload
 
 ### Generate random files to upload
 
@@ -79,6 +79,6 @@ You will need to adjust the params specified in this command
 -Ds3.remote.dir = name of folder where files should be copied in S3
 ```
 
-The application will start with HAWS logo and then you should see a bunch of log output. After that you should see messages indicating that upload is in progress. Wait until you see Upload completed for all 10 files. Then you can go to your AWS console and in S3 you should your new bucket with all the files uploaded !!!
+The application will start with HAWS logo and then you should see a bunch of log output. After that you should see messages indicating that upload is in progress. Wait until you see Upload completed for all 10 files. Then you can go to your AWS console and in S3 you should see your new bucket with all the files uploaded.
 
 ```
