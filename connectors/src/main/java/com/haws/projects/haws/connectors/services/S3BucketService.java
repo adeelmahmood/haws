@@ -1,4 +1,4 @@
-package com.haws.projects.haws.connectors;
+package com.haws.projects.haws.connectors.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

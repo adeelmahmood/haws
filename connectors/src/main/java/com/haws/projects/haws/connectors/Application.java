@@ -8,13 +8,16 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
+
+import com.haws.projects.haws.connectors.services.BucketService;
 
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-@PropertySource("aws-credentials.properties")
-//@ImportResource("aws.xml")
+@PropertySource("classpath:aws-credentials.properties")
+@ImportResource({ "classpath:aws.xml", "classpath:s3flows/file.xml" })
 public class Application {
 
 	public static void main(String[] args) {
@@ -22,13 +25,13 @@ public class Application {
 	}
 
 	@Autowired
-	BucketService bucketService;
+	BucketService service;
 
 	@Value("${s3.bucket}")
 	String bucket;
 
 	@PostConstruct
 	public void init() {
-		bucketService.createBucket(bucket);
+		service.createBucket(bucket);
 	}
 }

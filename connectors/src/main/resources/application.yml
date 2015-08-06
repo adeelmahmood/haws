@@ -1,11 +1,4 @@
-logging.level:
- org.springframework: INFO
- org.springframework.integration: WARN
- org.springframework.integration.aws.s3.core.DefaultAmazonS3Operations: INFO
- com.haws.projects.haws: DEBUG
- 
- 
 input.dir: /Users/adeelq/s3
 s3:
- bucket: adeel-bucket-2
+ bucket: adeel-bucket-001
  remote.dir: rd

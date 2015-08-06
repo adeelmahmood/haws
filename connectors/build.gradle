@@ -12,7 +12,9 @@ dependencyManagement {
 }
 
 dependencies {
-	compile("org.springframework.cloud:spring-cloud-starter-aws")
+	compile("org.springframework.cloud:spring-cloud-starter-aws") {
+		exclude module: "spring-cloud-aws-autoconfigure"
+	}
 
 	compile("org.springframework.integration:spring-integration-file")
 	compile("org.springframework.integration:spring-integration-aws:${springIntegrationAwsVersion}") {
