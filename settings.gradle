@@ -1,4 +1,4 @@
 rootProject.name = 'haws'
 
-include 'services'
-project(':services').name = 'haws-services'
+include 'connectors'
+project(':connectors').name = 'haws-connectors'

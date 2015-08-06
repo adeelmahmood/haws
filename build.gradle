@@ -30,6 +30,9 @@ configure(javaprojects) {
 	repositories {
 		mavenCentral()
 		mavenLocal()
+		maven { url 'http://maven.springframework.org/milestone/' }
+		maven { url 'http://repo.spring.io/libs-milestone' }
+		maven { url 'http://repo.spring.io/snapshot' }
 	}
 
 	configurations.all {
@@ -44,8 +47,7 @@ configure(javaprojects) {
 
 	dependencies {
 		compile("org.springframework.boot:spring-boot-starter")
-		compile("org.springframework.cloud:spring-cloud-starter-aws")
-
+		
 		testCompile("org.springframework.boot:spring-boot-starter-test")
 	}
 

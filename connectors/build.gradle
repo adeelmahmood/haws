@@ -1,0 +1,21 @@
+jar { baseName 'haws-connectors' }
+
+bootRepackage {
+	mainClass = 'com.haws.projects.haws.connectors.Application'
+	enabled = true
+}
+
+dependencyManagement {
+	imports {
+		 mavenBom 'org.springframework.cloud:spring-cloud-aws:1.0.2.RELEASE'
+	}
+}
+
+dependencies {
+	compile("org.springframework.cloud:spring-cloud-starter-aws")
+
+	compile("org.springframework.integration:spring-integration-file")
+	compile("org.springframework.integration:spring-integration-aws:${springIntegrationAwsVersion}") {
+		exclude module: "aws-java-sdk"
+	}
+}

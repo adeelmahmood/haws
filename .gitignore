@@ -12,3 +12,4 @@ logs
 metastore_db
 *.log
 .svn
+aws-credentials.properties
