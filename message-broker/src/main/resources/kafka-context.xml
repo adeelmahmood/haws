@@ -1,0 +1,71 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:int-kafka="http://www.springframework.org/schema/integration/kafka"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/integration/kafka http://www.springframework.org/schema/integration/kafka/spring-integration-kafka.xsd">
+
+	<bean id="kafkaStringEncoder"
+		class="org.springframework.integration.kafka.serializer.avro.AvroReflectDatumBackedKafkaEncoder">
+		<constructor-arg value="java.lang.String" />
+	</bean>
+
+	<bean id="kafkaMessageHolderEncoder"
+		class="org.springframework.integration.kafka.serializer.avro.AvroReflectDatumBackedKafkaEncoder">
+		<constructor-arg value="com.haws.projects.haws.broker.MessageHolder" />
+	</bean>
+
+	<bean id="kafkaStringDecoder"
+		class="org.springframework.integration.kafka.serializer.avro.AvroReflectDatumBackedKafkaDecoder">
+		<constructor-arg value="java.lang.String" />
+	</bean>
+
+	<bean id="kafkaMessageHolderDecoder"
+		class="org.springframework.integration.kafka.serializer.avro.AvroReflectDatumBackedKafkaDecoder">
+		<constructor-arg value="com.haws.projects.haws.broker.MessageHolder" />
+	</bean>
+
+	<!-- Producer -->
+
+	<int-kafka:producer-context id="kafkaProducerContext"
+		producer-properties="producerProperties">
+		<int-kafka:producer-configurations>
+			<int-kafka:producer-configuration
+				broker-list="${kafka.broker.list}" topic="${kafka.topic}"
+				key-class-type="java.lang.String" value-class-type="com.haws.projects.haws.broker.MessageHolder"
+				key-encoder="kafkaStringEncoder" value-encoder="kafkaMessageHolderEncoder"
+				compression-codec="default" />
+		</int-kafka:producer-configurations>
+	</int-kafka:producer-context>
+
+	<bean id="producerProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="topic.metadata.refresh.interval.ms">3600000</prop>
+				<prop key="message.send.max.retries">5</prop>
+				<prop key="send.buffer.bytes">5242880</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Consumer -->
+
+	<int-kafka:consumer-context id="consumerContext"
+		consumer-timeout="4000" zookeeper-connect="zookeeperConnect">
+		<int-kafka:consumer-configurations>
+			<int-kafka:consumer-configuration
+				group-id="default" max-messages="5000" key-decoder="kafkaStringDecoder"
+				value-decoder="kafkaMessageHolderDecoder">
+				<int-kafka:topic id="${kafka.topic}" streams="4" />
+			</int-kafka:consumer-configuration>
+		</int-kafka:consumer-configurations>
+	</int-kafka:consumer-context>
+
+	<int-kafka:zookeeper-connect id="zookeeperConnect"
+		zk-connect="${zk.host}" zk-connection-timeout="6000"
+		zk-session-timeout="6000" zk-sync-time="2000" />
+
+</beans>

@@ -2,3 +2,6 @@ rootProject.name = 'haws'
 
 include 'connectors'
 project(':connectors').name = 'haws-connectors'
+
+include 'message-broker'
+project(':message-broker').name = 'haws-message-broker'
