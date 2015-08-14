@@ -27,7 +27,6 @@ public class DefaultMessagingService implements MessagingService {
 	@Override
 	public <T extends AbstractMessage<?>> void sendMessage(T message) throws MessageSendException {
 		message.setId(idGenerator.generateId());
-		log.debug("sending message " + message.getId());
 
 		try {
 			// send the message using broker service

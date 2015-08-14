@@ -1,0 +1,17 @@
+jar { baseName 'haws-master' }
+
+bootRepackage {
+	mainClass = 'com.haws.projects.haws.master.Application'
+	enabled = true
+}
+
+dependencies {
+
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf") {
+		exclude group: 'ch.qos.logback', module: 'logback-classic'
+	}
+
+	compile(project(":haws-coordinator"))
+	compile(project(":haws-communicator"))
+}
+

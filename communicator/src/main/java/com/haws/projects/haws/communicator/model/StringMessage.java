@@ -7,4 +7,9 @@ public class StringMessage extends AbstractMessage<String> {
 	public StringMessage(String message) {
 		this.payload = message;
 	}
+
+	@Override
+	public String toString() {
+		return payload;
+	}
 }

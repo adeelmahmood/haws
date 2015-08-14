@@ -20,4 +20,7 @@ dependencies {
 	compile("org.springframework.integration:spring-integration-aws:${springIntegrationAwsVersion}") {
 		exclude module: "aws-java-sdk"
 	}
+	
+	compile(project(":haws-coordinator"))
+	compile(project(":haws-communicator"))
 }

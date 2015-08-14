@@ -5,3 +5,9 @@ project(':connectors').name = 'haws-connectors'
 
 include 'communicator'
 project(':communicator').name = 'haws-communicator'
+
+include 'coordinator'
+project(':coordinator').name = 'haws-coordinator'
+
+include 'master'
+project(':master').name = 'haws-master'

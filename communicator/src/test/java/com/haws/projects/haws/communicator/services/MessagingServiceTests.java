@@ -1,7 +1,5 @@
 package com.haws.projects.haws.communicator.services;
 
-import java.util.concurrent.CountDownLatch;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.boot.test.IntegrationTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -24,7 +21,6 @@ import com.haws.projects.haws.communicator.model.StringMessage;
 public class MessagingServiceTests {
 
 	@Configuration
-	@ImportResource("kafka-broker.xml")
 	@ComponentScan("com.haws.projects.haws.communicator")
 	@EnableAutoConfiguration
 	static class Config {
@@ -41,26 +37,22 @@ public class MessagingServiceTests {
 
 	@Test
 	public void test() throws MessageSendException, InterruptedException {
-		StringMessage message1 = new StringMessage("string message 1");
-		service.sendMessage(message1);
-
-		while (!listener.isDone()) {
-			Thread.sleep(500);
+		for (int i = 1; i <= 5; i++) {
+			service.sendMessage(new StringMessage("string message " + i));
 		}
+		Thread.sleep(5000);
+
+		for (int i = 6; i <= 10; i++) {
+			service.sendMessage(new StringMessage("string message " + i));
+		}
+		Thread.sleep(10000);
 	}
 
 	static class StringMessageListener implements MessageListener<StringMessage> {
 
-		final CountDownLatch latch = new CountDownLatch(1);
-
 		@Override
 		public void receive(StringMessage message) {
 			System.out.println("\nReceieved => " + message.getPayload() + "\n");
-			latch.countDown();
-		}
-
-		public boolean isDone() {
-			return latch.getCount() == 0;
 		}
 	}
 }

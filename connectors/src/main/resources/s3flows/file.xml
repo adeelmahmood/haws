@@ -17,13 +17,14 @@
 	<int:channel id="files">
 		<int:dispatcher task-executor="executor" />
 		<int:interceptors>
-			<int:wire-tap channel="loggit" />
+			<int:wire-tap channel="logger" />
 		</int:interceptors>
 	</int:channel>
 
-	<int:logging-channel-adapter id="loggit"
-		level="INFO" logger-name="com.haws.projects.haws.services.s3.Uploader"
-		expression="'Uploading File: ' + payload.name + '(' + payload.length() + ')'" />
+	<int:channel id="logger" />
+
+	<int:service-activator id="reporter"
+		input-channel="logger" ref="progressReporter" method="onUploadStarted" />
 
 	<int-aws:s3-outbound-channel-adapter
 		id="s3-outbound" channel="files" bucket="${s3.bucket}"

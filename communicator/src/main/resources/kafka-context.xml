@@ -53,12 +53,13 @@
 	<!-- Consumer -->
 
 	<int-kafka:consumer-context id="consumerContext"
-		consumer-timeout="4000" zookeeper-connect="zookeeperConnect">
+		consumer-timeout="4000" zookeeper-connect="zookeeperConnect"
+		consumer-properties="consumerProperties">
 		<int-kafka:consumer-configurations>
 			<int-kafka:consumer-configuration
 				group-id="default" max-messages="5000" key-decoder="kafkaStringDecoder"
 				value-decoder="kafkaMessageDecoder">
-				<int-kafka:topic id="${kafka.topic}" streams="4" />
+				<int-kafka:topic id="${kafka.topic}" streams="1" />
 			</int-kafka:consumer-configuration>
 		</int-kafka:consumer-configurations>
 	</int-kafka:consumer-context>
@@ -66,5 +67,17 @@
 	<int-kafka:zookeeper-connect id="zookeeperConnect"
 		zk-connect="${zk.host}" zk-connection-timeout="6000"
 		zk-session-timeout="6000" zk-sync-time="2000" />
+
+	<bean id="consumerProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="auto.offset.reset">smallest</prop>
+				<prop key="socket.receive.buffer.bytes">10485760</prop> <!-- 10M -->
+				<prop key="fetch.message.max.bytes">5242880</prop>
+				<prop key="auto.commit.interval.ms">1000</prop>
+			</props>
+		</property>
+	</bean>
 
 </beans>

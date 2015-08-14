@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorator="layout">
+<head></head>
+<body>
+	<div layout:fragment="content" layout="row" ng-controller="HomeCtrl">
+		<div layout="column" layout-fill="" class="relative">
+			<md-toolbar>
+			<div class="md-toolbar-tools"
+				style="text-decoration: none; color: #000;">
+				<h2 style="color: white;">HAWS Master</h2>
+			</div>
+			</md-toolbar>
+
+			<ui-view layout="column" layout-fill="" layout-padding="">
+			</ui-view>
+		</div>
+	</div>
+</body>
+</html>

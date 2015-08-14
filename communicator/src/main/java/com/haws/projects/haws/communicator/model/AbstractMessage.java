@@ -16,6 +16,8 @@ public abstract class AbstractMessage<T> implements Serializable {
 
 	protected T payload;
 
+	protected String sender;
+
 	public UUID getId() {
 		return id;
 	}
@@ -46,6 +48,14 @@ public abstract class AbstractMessage<T> implements Serializable {
 
 	public void setPayload(T payload) {
 		this.payload = payload;
+	}
+
+	public String getSender() {
+		return sender;
+	}
+
+	public void setSender(String sender) {
+		this.sender = sender;
 	}
 
 	public enum MessageType {

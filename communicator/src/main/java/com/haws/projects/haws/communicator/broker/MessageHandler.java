@@ -24,22 +24,23 @@ public class MessageHandler<T extends AbstractMessage<?>> {
 	}
 
 	public void handle(Message<?> message) {
-		T msg = parseMessage(message);
-		if (msg == null) {
+		List<T> msgs = parseMessage(message);
+		if (msgs == null) {
 			return;
 		}
 
 		// send message receive notification to all listeners
 		for (MessageListener<T> listener : listeners) {
-			listener.receive(msg);
+			for (T msg : msgs) {
+				listener.receive(msg);
+			}
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private T parseMessage(Message<?> message) {
+	private List<T> parseMessage(Message<?> message) {
 		Map<String, Object> data = (Map<String, Object>) message.getPayload();
 		Map<String, Object> dat = (Map<String, Object>) data.get(topic);
-		List<Object> da = (List<Object>) dat.entrySet().iterator().next().getValue();
-		return (T) da.get(0);
+		return (List<T>) dat.entrySet().iterator().next().getValue();
 	}
 }

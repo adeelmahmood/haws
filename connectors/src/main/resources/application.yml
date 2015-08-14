@@ -1,4 +1,12 @@
 input.dir: /Users/adeelq/s3
+
 s3:
  bucket: adeel-bucket-001
  remote.dir: rd
+ 
+kafka:
+ topic: haws-mbroker
+ broker.list: localhost:9092
+ 
+zk:
+ host: localhost:2181
