@@ -1,4 +1,4 @@
-package com.haws.projects.haws.communicator.model;
+package com.haws.projects.haws.common.model;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -15,8 +15,6 @@ public abstract class AbstractMessage<T> implements Serializable {
 	protected Map<String, Object> headers;
 
 	protected T payload;
-
-	protected String sender;
 
 	public UUID getId() {
 		return id;
@@ -48,14 +46,6 @@ public abstract class AbstractMessage<T> implements Serializable {
 
 	public void setPayload(T payload) {
 		this.payload = payload;
-	}
-
-	public String getSender() {
-		return sender;
-	}
-
-	public void setSender(String sender) {
-		this.sender = sender;
 	}
 
 	public enum MessageType {

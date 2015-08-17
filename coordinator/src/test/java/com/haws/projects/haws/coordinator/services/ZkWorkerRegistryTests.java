@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.haws.projects.haws.common.model.Worker;
 import com.haws.projects.haws.coordinator.ZkBaseTestClass;
 import com.haws.projects.haws.coordinator.exceptions.WorkerRegistrationException;
-import com.haws.projects.haws.coordinator.model.Worker;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration

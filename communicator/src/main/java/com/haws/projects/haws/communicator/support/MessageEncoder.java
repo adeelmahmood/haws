@@ -1,4 +1,4 @@
-package com.haws.projects.haws.communicator.model;
+package com.haws.projects.haws.communicator.support;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;

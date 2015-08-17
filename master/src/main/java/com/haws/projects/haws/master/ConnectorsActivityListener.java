@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.haws.projects.haws.coordinator.model.Worker;
+import com.haws.projects.haws.common.model.Worker;
 import com.haws.projects.haws.coordinator.services.WorkersActivityListener;
 
 @Service

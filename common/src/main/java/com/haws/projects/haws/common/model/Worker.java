@@ -1,6 +1,10 @@
-package com.haws.projects.haws.coordinator.model;
+package com.haws.projects.haws.common.model;
 
-public class Worker {
+import java.io.Serializable;
+
+public class Worker implements Serializable {
+
+	private static final long serialVersionUID = -4333879331392805355L;
 
 	private String id;
 

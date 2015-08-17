@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.haws.projects.haws.common.model.WorkerMessage;
 import com.haws.projects.haws.communicator.broker.MessageListener;
 import com.haws.projects.haws.communicator.exceptions.MessageSendException;
-import com.haws.projects.haws.communicator.model.StringMessage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
@@ -25,33 +25,33 @@ public class MessagingServiceTests {
 	@EnableAutoConfiguration
 	static class Config {
 		@Bean
-		public StringMessageListener listener() {
-			return new StringMessageListener();
+		public WorkerMessageListener listener() {
+			return new WorkerMessageListener();
 		}
 	}
 
 	@Autowired
 	MessagingService service;
 	@Autowired
-	StringMessageListener listener;
+	WorkerMessageListener listener;
 
 	@Test
 	public void test() throws MessageSendException, InterruptedException {
 		for (int i = 1; i <= 5; i++) {
-			service.sendMessage(new StringMessage("string message " + i));
+			service.sendMessage(new WorkerMessage("string message " + i));
 		}
 		Thread.sleep(5000);
 
 		for (int i = 6; i <= 10; i++) {
-			service.sendMessage(new StringMessage("string message " + i));
+			service.sendMessage(new WorkerMessage("string message " + i));
 		}
 		Thread.sleep(10000);
 	}
 
-	static class StringMessageListener implements MessageListener<StringMessage> {
+	static class WorkerMessageListener implements MessageListener<WorkerMessage> {
 
 		@Override
-		public void receive(StringMessage message) {
+		public void receive(WorkerMessage message) {
 			System.out.println("\nReceieved => " + message.getPayload() + "\n");
 		}
 	}

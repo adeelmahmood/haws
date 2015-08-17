@@ -17,9 +17,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 
+import com.haws.projects.haws.common.model.Worker;
 import com.haws.projects.haws.connectors.services.BucketService;
 import com.haws.projects.haws.coordinator.exceptions.WorkerRegistrationException;
-import com.haws.projects.haws.coordinator.model.Worker;
 import com.haws.projects.haws.coordinator.services.WorkerRegistry;
 
 @Configuration

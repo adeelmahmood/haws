@@ -2,7 +2,7 @@ package com.haws.projects.haws.coordinator.services;
 
 import org.springframework.stereotype.Service;
 
-import com.haws.projects.haws.coordinator.model.Worker;
+import com.haws.projects.haws.common.model.Worker;
 
 @Service
 public class NoopWorkersActivityListener implements WorkersActivityListener {

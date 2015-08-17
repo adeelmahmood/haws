@@ -2,7 +2,7 @@ package com.haws.projects.haws.communicator.broker;
 
 import org.springframework.stereotype.Service;
 
-import com.haws.projects.haws.communicator.model.AbstractMessage;
+import com.haws.projects.haws.common.model.AbstractMessage;
 
 @Service
 public class NoopMessageListener implements MessageListener<AbstractMessage<?>> {

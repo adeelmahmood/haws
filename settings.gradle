@@ -1,5 +1,8 @@
 rootProject.name = 'haws'
 
+include 'common'
+project(':common').name = 'haws-common'
+
 include 'connectors'
 project(':connectors').name = 'haws-connectors'
 

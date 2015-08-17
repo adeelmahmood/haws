@@ -1,6 +1,6 @@
 package com.haws.projects.haws.coordinator.services;
 
-import com.haws.projects.haws.coordinator.model.Worker;
+import com.haws.projects.haws.common.model.Worker;
 
 public interface WorkersActivityListener {
 

@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.haws.projects.haws.communicator.model.StringMessage;
+import com.haws.projects.haws.common.model.WorkerMessage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
@@ -25,19 +25,19 @@ public class KafkaMessageBrokerTests {
 	@EnableAutoConfiguration
 	static class Config {
 		@Bean
-		public StringMessageListener listener() {
-			return new StringMessageListener();
+		public WorkerMessageListener listener() {
+			return new WorkerMessageListener();
 		}
 	}
 
 	@Autowired
 	MessageBroker broker;
 	@Autowired
-	StringMessageListener listener;
+	WorkerMessageListener listener;
 
 	@Test
 	public void test() throws Exception {
-		StringMessage message = new StringMessage("simple string message");
+		WorkerMessage message = new WorkerMessage("simple string message");
 		broker.send(message, "1");
 
 		while (!listener.isDone()) {
@@ -45,12 +45,12 @@ public class KafkaMessageBrokerTests {
 		}
 	}
 
-	static class StringMessageListener implements MessageListener<StringMessage> {
+	static class WorkerMessageListener implements MessageListener<WorkerMessage> {
 
 		final CountDownLatch latch = new CountDownLatch(1);
 
 		@Override
-		public void receive(StringMessage message) {
+		public void receive(WorkerMessage message) {
 			System.out.println("\nReceieved => " + message.getPayload() + "\n");
 			latch.countDown();
 		}

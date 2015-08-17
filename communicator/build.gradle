@@ -2,7 +2,7 @@ jar { baseName 'haws-message-broker' }
 
 dependencies {
 
-	compile("org.springframework.integration:spring-integration-kafka:${springIntegrationKafkaVersion}") {
-		
-	}
+	compile(project(":haws-common"))
+
+	compile("org.springframework.integration:spring-integration-kafka:${springIntegrationKafkaVersion}")
 }

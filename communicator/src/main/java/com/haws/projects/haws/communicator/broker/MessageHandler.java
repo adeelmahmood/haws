@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 
-import com.haws.projects.haws.communicator.model.AbstractMessage;
+import com.haws.projects.haws.common.model.AbstractMessage;
 
 @Component
 public class MessageHandler<T extends AbstractMessage<?>> {

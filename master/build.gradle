@@ -10,7 +10,12 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf") {
 		exclude group: 'ch.qos.logback', module: 'logback-classic'
 	}
+	
+	compile("org.springframework.boot:spring-boot-starter-websocket") {
+		exclude group: 'ch.qos.logback', module: 'logback-classic'
+	}
 
+	compile(project(":haws-common"))
 	compile(project(":haws-coordinator"))
 	compile(project(":haws-communicator"))
 }

@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.IdGenerator;
 
+import com.haws.projects.haws.common.model.AbstractMessage;
 import com.haws.projects.haws.communicator.broker.MessageBroker;
 import com.haws.projects.haws.communicator.exceptions.MessageSendException;
-import com.haws.projects.haws.communicator.model.AbstractMessage;
 
 @Service
 public class DefaultMessagingService implements MessagingService {

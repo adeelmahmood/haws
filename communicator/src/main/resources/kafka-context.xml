@@ -13,7 +13,7 @@
 	</bean>
 
 	<bean id="kafkaMessageEncoder"
-		class="com.haws.projects.haws.communicator.model.MessageEncoder">
+		class="com.haws.projects.haws.communicator.support.MessageEncoder">
 	</bean>
 
 	<bean id="kafkaStringDecoder"
@@ -22,7 +22,7 @@
 	</bean>
 
 	<bean id="kafkaMessageDecoder"
-		class="com.haws.projects.haws.communicator.model.MessageDecoder">
+		class="com.haws.projects.haws.communicator.support.MessageDecoder">
 	</bean>
 
 	<!-- Producer -->
@@ -33,7 +33,7 @@
 			<int-kafka:producer-configuration
 				broker-list="${kafka.broker.list}" topic="${kafka.topic}"
 				key-class-type="java.lang.String"
-				value-class-type="com.haws.projects.haws.communicator.model.AbstractMessage"
+				value-class-type="com.haws.projects.haws.common.model.AbstractMessage"
 				key-encoder="kafkaStringEncoder" value-encoder="kafkaMessageEncoder"
 				compression-codec="default" />
 		</int-kafka:producer-configurations>

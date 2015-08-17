@@ -6,21 +6,16 @@ bootRepackage {
 }
 
 dependencyManagement {
-	imports {
-		 mavenBom 'org.springframework.cloud:spring-cloud-aws:1.0.2.RELEASE'
-	}
+	imports { mavenBom 'org.springframework.cloud:spring-cloud-aws:1.0.2.RELEASE' }
 }
 
 dependencies {
-	compile("org.springframework.cloud:spring-cloud-starter-aws") {
-		exclude module: "spring-cloud-aws-autoconfigure"
-	}
+	compile("org.springframework.cloud:spring-cloud-starter-aws") { exclude module: "spring-cloud-aws-autoconfigure" }
 
 	compile("org.springframework.integration:spring-integration-file")
-	compile("org.springframework.integration:spring-integration-aws:${springIntegrationAwsVersion}") {
-		exclude module: "aws-java-sdk"
-	}
-	
+	compile("org.springframework.integration:spring-integration-aws:${springIntegrationAwsVersion}") { exclude module: "aws-java-sdk" }
+
+	compile(project(":haws-common"))
 	compile(project(":haws-coordinator"))
 	compile(project(":haws-communicator"))
 }

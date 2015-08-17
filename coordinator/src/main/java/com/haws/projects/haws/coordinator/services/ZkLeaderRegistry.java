@@ -24,9 +24,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.haws.projects.haws.common.model.Worker;
 import com.haws.projects.haws.coordinator.exceptions.LeadershipException;
 import com.haws.projects.haws.coordinator.exceptions.NotALeaderException;
-import com.haws.projects.haws.coordinator.model.Worker;
 import com.haws.projects.haws.coordinator.utils.Constants;
 
 @Service

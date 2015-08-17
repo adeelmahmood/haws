@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.haws.projects.haws.common.model.Worker;
 import com.haws.projects.haws.coordinator.exceptions.WorkerRegistrationException;
-import com.haws.projects.haws.coordinator.model.Worker;
 import com.haws.projects.haws.coordinator.utils.Constants;
 
 @Service

@@ -2,7 +2,7 @@ package com.haws.projects.haws.communicator.broker;
 
 import java.io.Serializable;
 
-import com.haws.projects.haws.communicator.model.AbstractMessage;
+import com.haws.projects.haws.common.model.AbstractMessage;
 
 public interface MessageBroker {
 
